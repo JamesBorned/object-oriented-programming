@@ -22,34 +22,18 @@ namespace jb {
         NaturalFraction() = default;
 
         NaturalFraction(int num, int denom) {
-            num = getNumerator();
-            denom = getDenominator();
+            this -> numerator  = num;
+            this -> denominator = denom;
         }
 
         ~NaturalFraction() = default;
 
         int getNumerator () {
-            inputNumerator:
-                cout << "Input a numerator: ";
-                cin >> numerator;
-                if (numerator <= 0) {
-                    goto inputNumerator;
-                }
-                else {
-                    return numerator;
-                }
+            return this -> numerator;
         }
 
         int getDenominator () {
-            inputDenominator:
-                cout << "Input a denominator: ";
-                cin >> denominator;
-                if (denominator <= 0) {
-                    goto inputDenominator;
-                }
-                else {
-                    return denominator;
-                }
+            return this -> denominator;
         }
 
         int findCommonDenom (NaturalFraction firstF, NaturalFraction secondF){
@@ -58,6 +42,10 @@ namespace jb {
 
         int addNumers (NaturalFraction firstF, NaturalFraction secondF){
             return firstF.numerator * secondF.denominator + secondF.numerator * firstF.denominator;
+        }
+
+        int subtractNumers (NaturalFraction firstF, NaturalFraction secondF){
+            return firstF.numerator * secondF.denominator - secondF.numerator * firstF.denominator;
         }
 
         int findGreatCommonDiv (int num, int denom){
@@ -80,22 +68,80 @@ namespace jb {
 
         NaturalFraction operator +(NaturalFraction& fraction){
 
+                NaturalFraction tmp;
+//                tmp.numerator = getNumerator();
+//                tmp.denominator = getDenominator();
+
+            //cout << fraction.numerator << "/" << fraction.denominator << "+" <<
+            //this -> numerator << "/" << this -> denominator << "= ";
+
+            tmp.numerator = addNumers(*this, fraction);;
+            tmp.denominator = findCommonDenom(*this, fraction);;
+
+            divisior = findGreatCommonDiv(tmp.numerator, tmp.denominator);
+
+            tmp.numerator = tmp.numerator / divisior;
+            tmp.denominator = tmp.denominator / divisior;
+
+            //cout << this -> numerator << "/" << this -> denominator;
+
+            return tmp;
+        }
+
+        NaturalFraction operator -(NaturalFraction& fraction){
+
             NaturalFraction tmp;
-//            numerator = getNumerator();
-//            denominator = getDenominator();
 
-            cout << fraction.numerator << "/" << fraction.denominator << "+" <<
-            this -> numerator << "/" << this -> denominator << "= ";
+            tmp.numerator = subtractNumers(*this, fraction);
+            tmp.denominator = findCommonDenom(*this, fraction);
 
-            this -> numerator = addNumers(tmp, fraction);;
-            this -> denominator = findCommonDenom(tmp, fraction);;
+            divisior = findGreatCommonDiv(tmp.numerator, tmp.denominator);
 
-            divisior = findGreatCommonDiv(this -> numerator, this -> denominator);
+            tmp.numerator = tmp.numerator / divisior;
+            tmp.denominator = tmp.denominator / divisior;
 
-            this -> numerator = tmp.numerator / divisior;
-            this -> denominator = tmp.denominator / divisior;
+            return tmp;
+        }
 
-            cout << this -> numerator << "/" << this -> denominator;
+        NaturalFraction operator *(NaturalFraction& fraction){
+
+            NaturalFraction tmp;
+
+            tmp.numerator = this -> numerator * fraction.numerator;
+            tmp.denominator = this -> denominator * fraction.denominator;
+
+            divisior = findGreatCommonDiv(tmp.numerator, tmp.denominator);
+
+            tmp.numerator = tmp.numerator / divisior;
+            tmp.denominator = tmp.denominator / divisior;
+
+            return tmp;
+        }
+
+        NaturalFraction operator /(NaturalFraction& fraction){
+
+            NaturalFraction tmp;
+
+            tmp.numerator = this -> numerator * fraction.denominator;
+            tmp.denominator = this -> denominator * fraction.numerator;
+
+            divisior = findGreatCommonDiv(tmp.numerator, tmp.denominator);
+
+            tmp.numerator = tmp.numerator / divisior;
+            tmp.denominator = tmp.denominator / divisior;
+
+            return tmp;
+        }
+
+        double getDecimal (){
+            double DecimalFraction = (double)this -> numerator / this -> denominator;
+            return DecimalFraction;
+        }
+
+        NaturalFraction getInverse (){
+            NaturalFraction tmp;
+            tmp.numerator = this -> denominator;
+            tmp.denominator = this -> numerator;
 
             return tmp;
         }
@@ -103,19 +149,74 @@ namespace jb {
     private:
 
         int numerator = 0;
-        int denominator = 0;
+        int denominator = 1;
         int divisior = 1;
     };
 }
 
 int main() {
+    int m1, n1, m2, n2;
 
-    jb::NaturalFraction a;
-    jb::NaturalFraction n = jb::NaturalFraction(0, 0);
+    inputNumerator1:
+    cout << "Input a numerator of the first natural fraction: " << '\n';
+    cin >> m1;
+    if (m1 <= 0) {
+        goto inputNumerator1;
+    }
 
-    jb::NaturalFraction b = jb::NaturalFraction(0, 0);
+    inputDenominator1:
+    cout << "Input a denominator of the first natural fraction: " << '\n';
+    cin >> n1;
+    if (n1 <= 0) {
+        goto inputDenominator1;
+    }
 
-    a = n + b;
-    //std::cout << "Hello, World!" << std::endl;
+    inputNumerator2:
+    cout << "Input a numerator of the second natural fraction: " << '\n';
+    cin >> m2;
+    if (m2 <= 0) {
+        goto inputNumerator2;
+    }
+
+    inputDenominator2:
+    cout << "Input a denominator of the second natural fraction: " << '\n';
+    cin >> n2;
+    if (n1 <= 0) {
+        goto inputDenominator2;
+    }
+
+    jb::NaturalFraction result;
+    jb::NaturalFraction first = jb::NaturalFraction(m1, n1);;
+    jb::NaturalFraction second = jb::NaturalFraction(m2, n2);
+
+    result = first + second;
+    cout << first.getNumerator() << "/" << first.getDenominator() <<
+    " + " << second.getNumerator() << "/" << second.getDenominator();
+
+    cout << " = " << result.getNumerator() <<
+    " / " << result.getDenominator() << '\n';
+
+    result = first - second;
+    cout << first.getNumerator() << "/" << first.getDenominator() <<
+         " - " << second.getNumerator() << "/" << second.getDenominator();
+
+    cout << " = " <<
+    result.getNumerator() << " / " << result.getDenominator() << '\n';
+
+    result = first * second;
+    cout << first.getNumerator() << "/" << first.getDenominator() <<
+         " * " << second.getNumerator() << "/" << second.getDenominator();
+
+    cout << " = " << result.getNumerator() << " / " << result.getDenominator() << '\n';
+
+    result = first / second;
+    cout << first.getNumerator() << "/" << first.getDenominator() <<
+         " / " << second.getNumerator() << "/" << second.getDenominator();
+
+    cout <<" = " << result.getNumerator() << " / " << result.getDenominator() << '\n';
+
+    cout << "Inverse fraction: " << result.getInverse().getNumerator() << "/" << result.getInverse().getDenominator() <<'\n';
+    cout << "Decimal fraction: " << result.getInverse().getDecimal();
+
     return 0;
 }
