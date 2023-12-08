@@ -67,8 +67,7 @@ namespace jb {
         }
 
         NaturalFraction operator +(NaturalFraction& fraction){
-
-                NaturalFraction tmp;
+            NaturalFraction tmp;
 //                tmp.numerator = getNumerator();
 //                tmp.denominator = getDenominator();
 
@@ -157,32 +156,40 @@ namespace jb {
 int main() {
     int m1, n1, m2, n2;
 
-    inputNumerator1:
-    cout << "Input a numerator of the first natural fraction: " << '\n';
-    cin >> m1;
-    if (m1 <= 0) {
-        goto inputNumerator1;
+    bool flag = 0;
+    while (flag == 0){
+        cout << "Input a numerator of the first natural fraction: " << '\n';
+        cin >> m1;
+        if (m1 > 0) {
+            flag = 1;
+        }
     }
 
-    inputDenominator1:
-    cout << "Input a denominator of the first natural fraction: " << '\n';
-    cin >> n1;
-    if (n1 <= 0) {
-        goto inputDenominator1;
+    flag = 0;
+    while (flag == 0) {
+        cout << "Input a denominator of the first natural fraction: " << '\n';
+        cin >> n1;
+        if (n1 > 0) {
+            flag = 1;
+        }
     }
 
-    inputNumerator2:
-    cout << "Input a numerator of the second natural fraction: " << '\n';
-    cin >> m2;
-    if (m2 <= 0) {
-        goto inputNumerator2;
+    flag = 0;
+    while (flag == 0){
+        cout << "Input a numerator of the second natural fraction: " << '\n';
+        cin >> m2;
+        if (m2 > 0) {
+            flag = 1;
+        }
     }
 
-    inputDenominator2:
-    cout << "Input a denominator of the second natural fraction: " << '\n';
-    cin >> n2;
-    if (n1 <= 0) {
-        goto inputDenominator2;
+    flag = 0;
+    while (flag == 0) {
+        cout << "Input a denominator of the second natural fraction: " << '\n';
+        cin >> n2;
+        if (n2 > 0) {
+            flag = 1;
+        }
     }
 
     jb::NaturalFraction result;
