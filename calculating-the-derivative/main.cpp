@@ -25,10 +25,6 @@ namespace jb {
 
         virtual ~DerivativeCalc() = default;
 
-        static double getPolynomial(double x, int a, int b, int c) {
-            return a* pow(x, 2) + b * x + c;
-        }
-
         void setFunction(func F){
             f = F;
         }
@@ -102,8 +98,14 @@ int main() {
     cout << "Input x-coordinate of the point: ";
     cin >> x0;
 
-    cout << "Input step: ";
-    cin >> step;
+    int flag = 0;
+    while(flag == 0){
+        cout << "Input step: ";
+        cin >> step;
+        if (step != 0){
+            flag = 1;
+        }
+    }
 
     jb::func f = [](double x) {
         int a, b, c;
@@ -120,28 +122,31 @@ int main() {
         return a * pow(x, 2) + b * x + c;
     };
 
-    std::unique_ptr<jb::DerivativeCalc> LeftDerivativeCalc = std::make_unique<jb::LeftDerivativeCalc> (jb::LeftDerivativeCalc(step));
-    std::unique_ptr<jb::DerivativeCalc> RightDerivativeCalc = std::make_unique<jb::RightDerivativeCalc> (jb::RightDerivativeCalc(step));
-    std::unique_ptr<jb::DerivativeCalc> MiddleDerivativeCalc = std::make_unique<jb::MiddleDerivativeCalc> (jb::MiddleDerivativeCalc(step));
+    //std::unique_ptr<jb::DerivativeCalc> LeftDerivativeCalc = std::make_unique<jb::LeftDerivativeCalc> (jb::LeftDerivativeCalc(step));
+    //std::unique_ptr<jb::DerivativeCalc> RightDerivativeCalc = std::make_unique<jb::RightDerivativeCalc> (jb::RightDerivativeCalc(step));
+    //std::unique_ptr<jb::DerivativeCalc> MiddleDerivativeCalc = std::make_unique<jb::MiddleDerivativeCalc> (jb::MiddleDerivativeCalc(step));
+    jb::LeftDerivativeCalc LeftDer (step);
+    jb::RightDerivativeCalc RightDer (step);
+    jb::MiddleDerivativeCalc MiddleDer (step);
 
-    double LeftResult = LeftDerivativeCalc->calcDeriv(x0, f);
-    double LeftAccuracy = LeftDerivativeCalc->getAccuracy();
+    double LeftResult = LeftDer.calcDeriv(x0, f);
+    double LeftAccuracy = LeftDer.getAccuracy();
 
     cout << "A left derivative: " << LeftResult << '\n';
     cout << "A left derivative accuracy: " << LeftAccuracy << '\n';
 
     //jb::RightDerivativeCalc RightDerPolynomial = jb::RightDerivativeCalc(step);
 
-    double RightResult = RightDerivativeCalc->calcDeriv(x0, f) ;
-    double RightAccuracy = RightDerivativeCalc->getAccuracy() ;
+    double RightResult = RightDer.calcDeriv(x0, f) ;
+    double RightAccuracy = RightDer.getAccuracy() ;
 
     cout << "A right derivative: " << RightResult  << '\n';
     cout << "A right derivative accuracy: " << RightAccuracy << '\n';
 
     //jb::MiddleDerivativeCalc MiddleDerPolynomial = jb::MiddleDerivativeCalc(step);
 
-    double MiddleResult = MiddleDerivativeCalc->calcDeriv(x0, f);
-    double MiddleAccuracy =  MiddleDerivativeCalc->getAccuracy();
+    double MiddleResult = MiddleDer.calcDeriv(x0, f);
+    double MiddleAccuracy =  MiddleDer.getAccuracy();
 
     cout << "A middle derivative: " << MiddleResult << '\n';
     cout << "A middle derivative accuracy: " << MiddleAccuracy << '\n';
