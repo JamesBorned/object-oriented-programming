@@ -378,7 +378,7 @@ int main() {
     cin >> axe;
 
     cout << "Input two coordinates of required row in order from left to right\n"
-            "i, j, k, for example, i and k for axe 'y'.\n";
+            "i, j, k, for example, j and k for axe 'y'.\n";
     cout << "Input the first coordinate: ";
     int coor1;
     cin >> coor1;
@@ -443,7 +443,7 @@ int main() {
     cin >> axe;
 
     cout << "Input two coordinates of required row in order from left to right\n"
-            "i, j, k, for example, i and k for axe 'y'.\n";
+            "i, j, k, for example, j and k for axe 'y'.\n";
     cout << "Input the first coordinate: ";
     cin >> coor1;
 

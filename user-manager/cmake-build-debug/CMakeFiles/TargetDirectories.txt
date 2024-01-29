@@ -1,0 +1,3 @@
+C:/Users/HP/source/repos/object-oriented-programming/user-manager/cmake-build-debug/CMakeFiles/user_manager.dir
+C:/Users/HP/source/repos/object-oriented-programming/user-manager/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/HP/source/repos/object-oriented-programming/user-manager/cmake-build-debug/CMakeFiles/rebuild_cache.dir

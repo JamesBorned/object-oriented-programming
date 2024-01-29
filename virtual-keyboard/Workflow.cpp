@@ -4,8 +4,8 @@
 
 void Workflow() {
         Keyboard keyboard;
-        std::list<Key> keys;
-        
+        std::vector<std::string> keys;
+
         keyboard.setKeys(keys);
 //        char buf[128] = {0};
 //        for (long n = 0; n < 256; ++n){

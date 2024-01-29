@@ -1,14 +1,14 @@
 #include "Keyboard.h"
 
 void Keyboard::AddKey(Key& key) {
-    this->getKeys().push_back(key);
+    this->getKeys().push_back(key.getNameOfKey());
 }
 
-void Keyboard::setKeys (std::list<Key>& Keys) {
+void Keyboard::setKeys (std::list<std::string>& Keys) {
     this->m_Keys = Keys;
 }
 
-std::list<Key> Keyboard::getKeys() {
+std::vector<std::string> Keyboard::getKeys() {
     return this->m_Keys;
 }
 

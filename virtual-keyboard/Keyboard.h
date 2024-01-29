@@ -14,7 +14,7 @@ class Keyboard {
         Keyboard() = default;
 
         void setKeys(std::list<Key>& Keys);
-        std::list<Key> getKeys();
+        std::vector<std::string> getKeys();
 
         //void setPressedKeys(std::list<Key>& Keys);
         //std::list<Key> getPressedKeys();
@@ -23,7 +23,7 @@ class Keyboard {
         void AddKey(Key& Key);
 
     private:
-        std::list<Key> m_Keys;
+        std::vector<std::string> m_Keys;
         //std::list <Key> m_PressedKeys;
 };
 
