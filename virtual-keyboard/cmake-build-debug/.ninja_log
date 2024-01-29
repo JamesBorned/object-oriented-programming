@@ -1,0 +1,14 @@
+# ninja log v5
+440	6736	7254116173604471	build.ninja	d02e99a73df45552
+1	6709	7253326263410425	CMakeFiles/virtual_keyboard.dir/main.cpp.obj	a1d5e2c89623cc29
+297	10312	7281837041381270	CMakeFiles/virtual_keyboard.dir/main.cpp.obj	a1d5e2c89623cc29
+8	18346	7281840436154506	CMakeFiles/virtual_keyboard.dir/main.cpp.obj	a1d5e2c89623cc29
+50	18509	7281840435974483	CMakeFiles/virtual_keyboard.dir/Keyboard.cpp.obj	13ca479988ee4bf3
+60	18563	7281840435494518	CMakeFiles/virtual_keyboard.dir/Increase_volume_Command.cpp.obj	91e4ae618d15581a
+27	18567	7281840435944488	CMakeFiles/virtual_keyboard.dir/Volume_down_command.cpp.obj	2b06e3b3ece66a48
+144	19312	7281840454644411	CMakeFiles/virtual_keyboard.dir/Key.cpp.obj	47ad9bdfdc0cd3ef
+18491	21667	7281840478188640	CMakeFiles/virtual_keyboard.dir/Print_char_command.cpp.obj	73187792f80f6620
+9	2972	7281843268188710	CMakeFiles/virtual_keyboard.dir/Workflow.cpp.obj	7ce57802a0503cdd
+2975	13117	7281843369426164	virtual_keyboard.exe	b6f0ad4db4d9063e
+38	7993	7281851585707867	CMakeFiles/virtual_keyboard.dir/Workflow.cpp.obj	7ce57802a0503cdd
+7997	11859	7281851625361745	virtual_keyboard.exe	b6f0ad4db4d9063e
