@@ -4,13 +4,13 @@
 
 class User
 {
-public:
+private:
     int id;
     std::string login;
     std::string password;
     std::string name;
-
-    User(const int& id, const std::string& login, const std::string& password, const std::string& name)
+public:
+    User(const int& id=0, const std::string& login="", const std::string& password="", const std::string& name="")
         : id(id), login(login), password(password), name(name) {}
 
     int getId() const

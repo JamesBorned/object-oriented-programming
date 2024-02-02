@@ -10,5 +10,5 @@ __interface IUserManager
 public:
     void signIn(User& user);
     void signOut(User& user);
-    bool isAuthorized();
+    bool isAuthorized(User& user);
 };

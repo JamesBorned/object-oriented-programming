@@ -121,13 +121,10 @@ private:
 
         for (char c : str)
         {
-            if (c == delimiter)
+            if (c == delimiter && !part.empty())
             {
-                if (!part.empty())
-                {
                     parts.push_back(part);
                     part.clear();
-                }
             }
             else
             {
