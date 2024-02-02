@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\HP\source\repos\2left_projects\OOP_labs\5\main.cpp(28,9): warning C4101: userID: неиспользованная локальная переменная
+  lab5.vcxproj -> C:\Users\HP\source\repos\2left_projects\lab5\x64\Debug\lab5.exe

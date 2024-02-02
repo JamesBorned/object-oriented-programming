@@ -1,5 +1,9 @@
 #pragma once
 #include "User.h"
+#include <fstream>
+
+std::fstream userfile("users.txt");
+std::fstream outuserfile("outusers.txt");
 
 __interface IUserManager
 {
